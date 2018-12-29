@@ -3,7 +3,7 @@ var mongoose = require('mongoose')
 var Record = mongoose.model('Record'),
     Problem = mongoose.model('Problem');
 
-
+var probCtrl = require('./problem');
 
 
 
@@ -52,11 +52,11 @@ module.exports.addResponse = (req, res)=>{
 
 module.exports.getRecord = (req, res)=>{
 
-    var recId = req.body.id;
+    var recId = req.query.id;
 
-    Record.findById(recId, (err, doc)=>{
+    Record.findById(recId).populate('probId').then( doc=>{
 
-        if(!err){
+        if(doc){
             res.send({status : "Done", doc : doc})
         }
         else{
@@ -64,5 +64,21 @@ module.exports.getRecord = (req, res)=>{
         }
 
     })
+
+}
+
+
+module.exports.getNearby =  async (req, res)=>{
+
+    var lat = req.body.lat, 
+        lon = req.body.lon;
+
+    console.log("inside rec");
+
+    var nearbys = await probCtrl.getNearbyProblem(lat, lon);
+
+    res.send({status : "Done", doc : nearbys});
+
+    
 
 }

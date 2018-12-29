@@ -23,11 +23,15 @@ router.route('/problem')
 
 router.route('/record')
     .post( recCtrl.addRecord )
+        .get( recCtrl.getRecord )
 
 
 router.route('/respond')
     .post( recCtrl.addResponse );
 
+
+router.route('/record/nearby')
+        .post( recCtrl.getNearby );
 
 
 

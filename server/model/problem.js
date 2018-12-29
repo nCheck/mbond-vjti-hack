@@ -2,6 +2,19 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema
 
 
+// const pointSchema = new mongoose.Schema({
+//     type: {
+//       type: String,
+//       enum: ['Point'],
+//       default : 'Point'
+//     },
+//     coordinates: {
+//       type: [Number],
+//       required: true
+//     },
+//     index: { type: '2dsphere' }
+//   });
+
 var probSchema = new Schema({
     
     userId : {
@@ -9,6 +22,14 @@ var probSchema = new Schema({
         default : 101
     } ,
 
+    name : {
+        type : String,
+        default : "Gaurav Rai"
+    } ,
+    phoneNo : {
+        type : Number,
+        default : 9762622540
+    } ,
     timestamp : {
         type : Date,
         default : Date.now()
@@ -21,7 +42,7 @@ var probSchema = new Schema({
 
     timeOfOcc : {
         type : Date,
-        default : null
+        default : Date.now()
     } ,
 
     imageUrl : {
@@ -37,9 +58,24 @@ var probSchema = new Schema({
     } ,
     lon : {
         type : Number
+    },
+
+    location: { 
+        type: {
+            type: String,
+            enum: ['Point'],
+            default : 'Point'
+          },
+          coordinates: {
+            type: [Number],
+            required: true
+          }
     }
 
 });
 
 
+probSchema.index( { location : '2dsphere'} );
+
 module.exports = mongoose.model('Problem' , probSchema);
+
