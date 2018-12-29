@@ -11,7 +11,7 @@ module.exports.getNotices = ( req, res )=>{
     Notice.find({}, (err, doc)=>{
 
         if(!err){
-            res.send( { status : "Done", data : doc } )
+            res.render( 'record'  , { status : "Done", data : doc } )
         }else{
             res.send( { status : "Error", error : err } )
         }
