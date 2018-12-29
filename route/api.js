@@ -4,7 +4,8 @@ var mongoose              = require('mongoose');
 
 var uniCtrl = require('../ctrlr/uni'),
     recCtrl = require('../ctrlr/record'),
-    probCtrl = require('../ctrlr/problem');
+    probCtrl = require('../ctrlr/problem'),
+    notCtrl = require('../ctrlr/notice');
 
 
 
@@ -34,6 +35,8 @@ router.route('/record/nearby')
         .post( recCtrl.getNearby );
 
 
+router.route('/notice')
+        .get( notCtrl.getNotices )
 
 
 
