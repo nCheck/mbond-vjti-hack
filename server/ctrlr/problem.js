@@ -53,13 +53,13 @@ module.exports.getNearbyProblem = ( lat, lon ) =>{
 
     var query = locQuery( [lat, lon], 1000 );
 
-    console.log(query);
+    // console.log(query);
 
     return new Promise( (resolve, reject)=>{
 
         Problem.find(query, (err, doc)=>{
 
-            console.log(err, " - ", doc)
+            // console.log(err, " - ", doc)
             if(!err){
                 resolve({status : "Done", data : doc}) ;
             }

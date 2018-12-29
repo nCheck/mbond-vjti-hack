@@ -73,11 +73,30 @@ module.exports.getNearby =  async (req, res)=>{
     var lat = req.body.lat, 
         lon = req.body.lon;
 
-    console.log("inside rec");
+    // console.log("inside rec");
 
     var nearbys = await probCtrl.getNearbyProblem(lat, lon);
 
-    res.send({status : "Done", doc : nearbys});
+    var data = nearbys.data;
+    var probs = [];
+    data.forEach(ele => {
+        
+        probs.push( ele._id )
+
+    });
+
+    Record.find({ probId : { $in : probs } }, (err, doc)=>{
+
+
+        if(!err){
+            res.send({status : "Done", doc : doc})
+        }
+        else{
+            res.send({status : "Error", error : err})
+        }
+
+    } )
+
 
     
 
