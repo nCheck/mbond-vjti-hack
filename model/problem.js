@@ -70,6 +70,12 @@ var probSchema = new Schema({
             type: [Number],
             required: true
           }
+    } ,
+
+    status : {
+        type : String,
+        enum : ['Open', 'Closed'],
+        default : 'Open'
     }
 
 });
