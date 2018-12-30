@@ -11,6 +11,7 @@
     "url": "git+https://github.com/nCheck/eyantra-stroke.git"
   },
   "dependencies": {
+    "@pusher/push-notifications-server": "^1.0.1",
     "@tensorflow/tfjs": "^0.14.1",
     "body-parser": "^1.18.3",
     "cookie-parser": "~1.4.3",
@@ -18,8 +19,10 @@
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "http": "0.0.0",
+    "moment": "^2.23.0",
     "mongoose": "^5.4.0",
     "morgan": "^1.9.1",
+    "onesignal-node": "^2.0.1",
     "request": "^2.88.0"
   },
   "author": "nCheck & Thinkhatke",

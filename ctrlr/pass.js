@@ -43,3 +43,25 @@ module.exports.getPass = ( req, res )=>{
     })
 
 }
+
+
+module.exports.addLatLon = async ( req, res )=>{
+
+    var passId = req.body.id,
+        lat = req.body.lat,
+        lon = req.body.lon;
+
+    var passDoc = await Pass.findById( passId );
+
+    var goTrain = passDoc.goTrain.split(" ")  ,
+        currTime = (new Date()).toString().split(" ")[4].split(":")  ; //Getting Time
+    
+    var goTime = goTrain[0];
+
+    
+    
+    
+    
+    
+
+}

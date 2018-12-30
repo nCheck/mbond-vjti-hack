@@ -10,6 +10,7 @@ require('./pass');
 require('./problem');
 require('./record');
 require('./notice');
+require('./track')
 // require('./patient');
 // require('./record');
 

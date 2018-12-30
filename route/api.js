@@ -45,6 +45,8 @@ router.route('/pass')
         .post( passCtrl.addPass )
 
 
+router.route('/addTrack')
+    .post( notCtrl.addTrack );
 
 
 module.exports = router

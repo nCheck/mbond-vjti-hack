@@ -5,6 +5,8 @@ var Record = mongoose.model('Record'),
     Problem = mongoose.model('Problem');
 
 
+const PushNotifications = require('@pusher/push-notifications-server'); 
+
 
 module.exports.addProblem = async (req, res)=>{
 
@@ -14,27 +16,30 @@ module.exports.addProblem = async (req, res)=>{
     console.log(query);
 
     var pingToken = query.token;
-    var path = 'http://devdost.me/notify.php?token=' + pingToken;
 
-    console.log(path);
-
-    var options = {
-        url : path
-      };
+    // let pushNotifications = new PushNotifications({
+    //   instanceId: '814cd602-bfe8-42fe-ba72-1c601136f7ea',
+    //   secretKey: '34AE575EE72CBC2CCD3BBBFACB192E1AD47E81D911622C30E7BD0E53C707541D'
+    // });
 
 
-    var ress = await request.get(options, (error, response, body)=>{
-
-        console.log(error)
-        console.log(response)
-        console.log(body)
-    }) ;
-
-
-
-
-
-
+    // pushNotifications.publish(['hello'], {
+    //   apns: {
+    //     aps: {
+    //       alert: 'Hello!'
+    //     }
+    //   },
+    //   fcm: {
+    //     notification: {
+    //       title: 'Hello',
+    //       body: 'Hello, world!'
+    //     }
+    //   }
+    // }).then((publishResponse) => {
+    //   console.log('Just published:', publishResponse.publishId);
+    // }).catch((error) => {
+    //   console.log('Error:', error);
+    // });
 
 
     Problem.create(query, (err, doc)=>{
