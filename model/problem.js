@@ -76,6 +76,11 @@ var probSchema = new Schema({
         type : String,
         enum : ['Open', 'Closed'],
         default : 'Open'
+    } ,
+
+    token : {
+        type : String,
+        default : 'invalid'
     }
 
 });

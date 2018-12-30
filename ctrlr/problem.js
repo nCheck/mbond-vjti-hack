@@ -1,16 +1,41 @@
 var mongoose = require('mongoose')
-
+var http = require('http');
+var request = require('request');
 var Record = mongoose.model('Record'),
     Problem = mongoose.model('Problem');
 
 
 
-module.exports.addProblem = (req, res)=>{
+module.exports.addProblem = async (req, res)=>{
 
     query = req.body
     coordinates = [ query.lat, query.lon ];
     query['location'] = { coordinates : coordinates };
     console.log(query);
+
+    var pingToken = query.token;
+    var path = 'http://devdost.me/notify.php?token=' + pingToken;
+
+    console.log(path);
+
+    var options = {
+        url : path
+      };
+
+
+    var ress = await request.get(options, (error, response, body)=>{
+
+        console.log(error)
+        console.log(response)
+        console.log(body)
+    }) ;
+
+
+
+
+
+
+
 
     Problem.create(query, (err, doc)=>{
 

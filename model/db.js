@@ -6,6 +6,7 @@ mongoose.connection.on('connected' , () =>{
 	console.log('connected')
 });
 
+require('./pass');
 require('./problem');
 require('./record');
 require('./notice');

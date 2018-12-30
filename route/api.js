@@ -5,7 +5,8 @@ var mongoose              = require('mongoose');
 var uniCtrl = require('../ctrlr/uni'),
     recCtrl = require('../ctrlr/record'),
     probCtrl = require('../ctrlr/problem'),
-    notCtrl = require('../ctrlr/notice');
+    notCtrl = require('../ctrlr/notice'),
+    passCtrl = require('../ctrlr/pass');
 
 
 
@@ -39,7 +40,9 @@ router.route('/notice')
         .get( notCtrl.getNotices )
 
 
-
+router.route('/pass')
+    .get( passCtrl.getPass )
+        .post( passCtrl.addPass )
 
 
 
